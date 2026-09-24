@@ -226,7 +226,7 @@ function App() {
                   <div>
                     <p className="text-sm text-slate-500 font-medium">Địa chỉ</p>
                     <p className="text-lg text-white mb-2">Vui lòng xem trên bản đồ</p>
-                    <a href="https://maps.app.goo.gl/MCbPQKryJtLxH9yXA" target="_blank" rel="noreferrer" className="inline-flex items-center text-accent hover:text-white transition font-medium">
+                    <a href="https://maps.app.goo.gl/z28UfKPWNCSkGCAa9" target="_blank" rel="noreferrer" className="inline-flex items-center text-accent hover:text-white transition font-medium">
                       Chỉ đường trên Google Maps <ChevronRight className="h-4 w-4 ml-1" />
                     </a>
                   </div>
@@ -237,7 +237,7 @@ function App() {
             {/* Map Placeholder/iframe */}
             <div className="h-80 bg-slate-800 rounded-2xl overflow-hidden shadow-inner border border-slate-700 relative">
                <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15674.375176166164!2d106.6880843!3d10.8423405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529004052f50d%3A0x6bba783307fc8c62!2zRDk!5e0!3m2!1svi!2s!4v1714541571477!5m2!1svi!2s" 
+                src="https://maps.google.com/maps?q=10.3577713,106.3382289&hl=vi&z=17&output=embed" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 
