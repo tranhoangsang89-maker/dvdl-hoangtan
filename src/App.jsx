@@ -1,18 +1,20 @@
-import React from 'react';
-import { Phone, MapPin, Car, ShieldCheck, Clock, Users, ChevronRight, MessageCircle } from 'lucide-react';
+import React, { useState } from 'react';
+import { Phone, MapPin, Car, ShieldCheck, Clock, Users, ChevronRight, MessageCircle, X } from 'lucide-react';
 
 const cars = [
-  { id: 1, name: 'Toyota Innova Cross', seats: 8, price: '1.100.000', image: '/cars/toyota-innova-cross.png' },
-  { id: 2, name: 'Kia Carnival', seats: 8, price: '1.600.000', image: '/cars/kia-carnival.png' },
-  { id: 3, name: 'Hyundai Custin', seats: 7, price: '1.100.000', image: '/cars/huyndai-custin.png' },
-  { id: 4, name: 'Toyota Rush', seats: 7, price: '900.000', image: '/cars/toyota-rush.png' },
-  { id: 5, name: 'Toyota Veloz', seats: 7, price: '900.000', image: '/cars/toyota-veloz.png' },
-  { id: 6, name: 'Mitsubishi Xpander Cross', seats: 7, price: '900.000', image: '/cars/mitsubishi-xpander-cross.png' },
-  { id: 7, name: 'Honda Civic', seats: 5, price: '1.100.000', image: '/cars/honda-civic.png' },
-  { id: 8, name: 'Mazda2 Sport', seats: 5, price: '800.000', image: '/cars/mazda2-sport.png' },
+  { id: 1, name: 'Toyota Innova Cross', seats: 8, price: '1.100.000', image: '/cars/toyota-innova-cross.png', description: 'Mẫu MPV 8 chỗ thiết kế hoàn toàn mới, không gian rộng rãi bậc nhất phân khúc. Trang bị tiện nghi hiện đại, cách âm tốt, cực kỳ phù hợp cho các chuyến du lịch gia đình đông người hoặc nhóm bạn.' },
+  { id: 2, name: 'Kia Carnival', seats: 8, price: '1.600.000', image: '/cars/kia-carnival.png', description: 'Dòng xe MPV cao cấp cỡ lớn 8 chỗ với thiết kế sang trọng như một chiếc SUV. Không gian nội thất cực kỳ thoải mái với cửa lùa điện thông minh, mang đến trải nghiệm êm ái thượng lưu cho mọi hành trình.' },
+  { id: 3, name: 'Hyundai Custin', seats: 7, price: '1.100.000', image: '/cars/huyndai-custin.png', description: 'Mẫu xe 7 chỗ với cửa lùa tiện dụng, thiết kế hiện đại và trẻ trung. Nội thất rộng rãi, ghế ngồi bọc da cao cấp cùng nhiều tính năng an toàn vượt trội, là lựa chọn hoàn hảo cho gia đình.' },
+  { id: 4, name: 'Toyota Rush', seats: 7, price: '900.000', image: '/cars/toyota-rush.png', description: 'Chiếc SUV 7 chỗ gầm cao mạnh mẽ, linh hoạt trên nhiều địa hình. Thiết kế thể thao, không gian đủ rộng cho 7 người và tiết kiệm nhiên liệu ưu việt, phù hợp cho cả đi phố lẫn dã ngoại.' },
+  { id: 5, name: 'Toyota Veloz', seats: 7, price: '900.000', image: '/cars/toyota-veloz.png', description: 'Mẫu MPV 7 chỗ lai SUV với thiết kế góc cạnh, đậm chất thể thao. Nội thất hiện đại, không gian linh hoạt, tích hợp nhiều công nghệ an toàn tiên tiến, mang lại sự yên tâm tuyệt đối.' },
+  { id: 6, name: 'Mitsubishi Xpander Cross', seats: 7, price: '900.000', image: '/cars/mitsubishi-xpander-cross.png', description: 'Dòng xe 7 chỗ gầm cao mang phong cách thể thao nam tính. Hệ thống treo êm ái, vận hành ổn định và tiết kiệm nhiên liệu. Phù hợp cho những gia đình thích sự mạnh mẽ, cá tính.' },
+  { id: 7, name: 'Honda Civic', seats: 5, price: '1.100.000', image: '/cars/honda-civic.png', description: 'Mẫu sedan hạng C 5 chỗ đậm chất thể thao, cảm giác lái phấn khích và đầm chắc. Thiết kế ngoại thất cuốn hút, nội thất tiện nghi, lý tưởng cho những chuyến đi dạo phố hay công tác.' },
+  { id: 8, name: 'Mazda2 Sport', seats: 5, price: '800.000', image: '/cars/mazda2-sport.png', description: 'Mẫu xe hatchback 5 chỗ nhỏ gọn, thiết kế KODO thanh lịch và thời trang. Linh hoạt khi di chuyển trong phố đông, tiết kiệm nhiên liệu xuất sắc, là lựa chọn số 1 cho các cặp đôi hoặc gia đình nhỏ.' },
 ];
 
 function App() {
+  const [selectedCar, setSelectedCar] = useState(null);
+
   return (
     <div className="font-sans text-slate-800 bg-slate-50 min-h-screen">
       {/* Navigation */}
@@ -147,10 +149,18 @@ function App() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
             {cars.map((car) => (
               <div key={car.id} className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition duration-300 flex flex-col group">
-                <div className="relative h-32 sm:h-48 overflow-hidden">
+                <div 
+                  className="relative h-32 sm:h-48 overflow-hidden cursor-pointer"
+                  onClick={() => setSelectedCar(car)}
+                >
                   <img src={car.image} alt={car.name} className="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
                   <div className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-white/90 backdrop-blur-sm px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-xs sm:text-sm font-semibold text-slate-700 shadow-sm">
                     {car.seats} Chỗ
+                  </div>
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition duration-300 flex items-center justify-center">
+                    <span className="bg-white/90 text-slate-800 text-sm font-bold px-4 py-2 rounded-full opacity-0 group-hover:opacity-100 transition duration-300 shadow-lg transform translate-y-4 group-hover:translate-y-0">
+                      Xem Chi Tiết
+                    </span>
                   </div>
                 </div>
                 <div className="p-3 sm:p-6 flex-1 flex flex-col">
@@ -256,6 +266,54 @@ function App() {
           </span>
         </a>
       </div>
+
+      {/* Car Detail Modal */}
+      {selectedCar && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm transition-opacity" onClick={() => setSelectedCar(null)}>
+          <div 
+            className="bg-white rounded-3xl w-full max-w-2xl overflow-hidden shadow-2xl relative flex flex-col max-h-[90vh]" 
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button 
+              onClick={() => setSelectedCar(null)}
+              className="absolute top-4 right-4 z-10 bg-white/80 hover:bg-white text-slate-800 p-2 rounded-full shadow-md backdrop-blur-sm transition"
+            >
+              <X className="h-5 w-5" />
+            </button>
+            <div className="h-48 sm:h-72 w-full relative bg-slate-100">
+              <img src={selectedCar.image} alt={selectedCar.name} className="w-full h-full object-cover" />
+              <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-bold text-slate-800 shadow-sm flex items-center">
+                <Users className="h-4 w-4 mr-2 text-primary" /> {selectedCar.seats} Chỗ Ngồi
+              </div>
+            </div>
+            <div className="p-6 sm:p-8 overflow-y-auto">
+              <h2 className="text-2xl sm:text-3xl font-bold text-slate-800 mb-2">{selectedCar.name}</h2>
+              <div className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-lg text-sm font-semibold mb-6">
+                Xe Đời Mới - Tự Lái
+              </div>
+              <p className="text-slate-600 leading-relaxed text-base sm:text-lg mb-8">
+                {selectedCar.description}
+              </p>
+              
+              <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100 mb-8 flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-slate-500 font-medium mb-1">Giá thuê tự lái</p>
+                  <p className="text-secondary font-extrabold text-2xl">{selectedCar.price}đ <span className="text-base font-normal text-slate-500">/ngày</span></p>
+                </div>
+              </div>
+
+              <a 
+                href={`https://zalo.me/0989557755`} 
+                target="_blank" 
+                rel="noreferrer" 
+                className="block w-full text-center bg-primary hover:bg-blue-800 text-white font-bold text-lg py-4 rounded-xl transition shadow-lg shadow-blue-200"
+              >
+                Đặt Xe Ngay
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
