@@ -35,8 +35,9 @@ function App() {
               </a>
             </div>
             <div className="md:hidden flex items-center">
-              <a href="tel:0989557755" className="bg-secondary text-white p-2 rounded-full shadow-lg">
-                <Phone className="h-5 w-5" />
+              <a href="tel:0989557755" className="bg-secondary hover:bg-orange-600 text-white px-4 py-2.5 rounded-full shadow-lg flex items-center font-bold">
+                <Phone className="h-4 w-4 mr-2" />
+                <span className="text-sm">0989 55 77 55</span>
               </a>
             </div>
           </div>
@@ -44,39 +45,57 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative pt-24 pb-12 sm:pt-32 sm:pb-20 lg:pt-48 lg:pb-32 overflow-hidden flex items-center justify-center">
-        {/* Background Video */}
-        <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
-          className="absolute inset-0 w-full h-full object-cover z-0"
-        >
-          <source src="/intro-hoangtan.mp4" type="video/mp4" />
-        </video>
+      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-primary overflow-hidden">
+        {/* Background Decorative elements */}
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-blue-500/20 blur-[120px] rounded-full pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-accent/20 blur-[100px] rounded-full pointer-events-none"></div>
 
-        {/* Video Overlays for better text readability */}
-        <div className="absolute inset-0 bg-primary/80 mix-blend-multiply z-0"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-transparent to-transparent z-0"></div>
-        
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full mt-4 sm:mt-0">
-          <span className="inline-block py-1 px-3 rounded-full bg-white/20 text-accent font-semibold tracking-wider mb-3 sm:mb-4 border border-white/30 backdrop-blur-sm text-xs sm:text-base">
-            DỊCH VỤ THUÊ XE UY TÍN
-          </span>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 sm:mb-6 leading-tight">
-            Dịch Vụ Cho Thuê Xe <br className="hidden md:block" /> Du Lịch <span className="text-accent">Hoàng Tấn</span>
-          </h1>
-          <p className="mt-2 sm:mt-4 text-base sm:text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto font-light leading-relaxed mb-6 sm:mb-10">
-            Chuyên cung cấp các dòng xe đời mới 4 - 8 chỗ. Dịch vụ cho thuê tự lái chuyên nghiệp. Thủ tục nhanh gọn, giao xe tận nơi.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
-            <a href="#fleet" className="bg-accent hover:bg-yellow-500 text-primary font-bold text-base sm:text-lg px-6 py-3 sm:px-8 sm:py-4 rounded-full transition shadow-xl flex items-center justify-center">
-              Xem Bảng Giá <ChevronRight className="ml-2 h-5 w-5" />
-            </a>
-            <a href="tel:0989557755" className="bg-white/10 hover:bg-white/20 text-white border border-white/30 font-bold text-base sm:text-lg px-6 py-3 sm:px-8 sm:py-4 rounded-full transition backdrop-blur-sm flex items-center justify-center">
-              Gọi Tư Vấn Ngay
-            </a>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
+            
+            {/* Text Content */}
+            <div className="w-full lg:w-1/2 text-center lg:text-left">
+              <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-6 leading-tight tracking-wide uppercase">
+                Dịch Vụ Cho Thuê Xe Tự Lái
+                <span 
+                  className="text-accent block mt-3 sm:mt-6 text-7xl md:text-8xl lg:text-[100px] tracking-normal normal-case drop-shadow-md" 
+                  style={{ fontFamily: "'Dancing Script', cursive", fontWeight: 700 }}
+                >
+                  Hoàng Tấn
+                </span>
+              </h1>
+              <p className="text-lg md:text-xl text-blue-100 font-light leading-relaxed mb-10 max-w-2xl mx-auto lg:mx-0">
+                Chuyên cung cấp các dòng xe đời mới 4 - 8 chỗ. Dịch vụ cho thuê tự lái chuyên nghiệp. Thủ tục nhanh gọn, giao xe tận nơi.
+              </p>
+              <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+                <a href="#fleet" className="bg-accent hover:bg-yellow-500 text-primary font-bold text-lg px-8 py-4 rounded-full transition shadow-lg shadow-accent/30 flex items-center justify-center">
+                  Xem Bảng Giá <ChevronRight className="ml-2 h-5 w-5" />
+                </a>
+                <a href="tel:0989557755" className="bg-white/10 hover:bg-white/20 text-white border border-white/30 font-bold text-lg px-8 py-4 rounded-full transition backdrop-blur-sm flex items-center justify-center">
+                  Gọi Tư Vấn Ngay
+                </a>
+              </div>
+            </div>
+
+            {/* Video Content */}
+            <div className="w-full lg:w-1/2 mt-8 lg:mt-0 relative">
+              {/* Decorative circle behind video */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] bg-accent/20 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+              
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-black/50 border-4 border-white/10 aspect-video bg-slate-800 group">
+                <video 
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline 
+                  className="w-full h-full object-cover group-hover:scale-105 transition duration-700"
+                >
+                  <source src="/intro-hoangtan.mp4" type="video/mp4" />
+                </video>
+                <div className="absolute inset-0 ring-1 ring-inset ring-white/20 rounded-3xl pointer-events-none"></div>
+              </div>
+            </div>
+            
           </div>
         </div>
       </section>
